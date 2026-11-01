@@ -1,0 +1,8 @@
+<!doctype html><html><head><meta charset="utf-8"><title>transfer</title></head><body>
+<p id="s">Preparing images…</p>
+<script>
+const FILES=["iphone_ko_1_game","iphone_ko_2_review","iphone_ko_3_puzzle","iphone_ko_4_learn","iphone_ko_5_record","ipad_ko_1_game","ipad_ko_2_review","ipad_ko_3_puzzle","ipad_ko_4_learn","ipad_ko_5_record","iphone_en_1_game","iphone_en_2_review","iphone_en_3_puzzle","iphone_en_4_learn","iphone_en_5_record","ipad_en_1_game","ipad_en_2_review","ipad_en_3_puzzle","ipad_en_4_learn","ipad_en_5_record"];
+(async()=>{const T='https://appstoreconnect.apple.com';if(!window.opener){document.getElementById('s').textContent='No opener';return;}
+ for(const n of FILES){const b=await fetch('screens/'+n+'.png',{cache:'no-store'}).then(r=>r.arrayBuffer());window.opener.postMessage({jgFile:n+'.png',buf:b},T,[b]);}
+ window.opener.postMessage({jgDone:FILES.length},T);document.getElementById('s').textContent='Sent '+FILES.length;})();
+</script></body></html>
